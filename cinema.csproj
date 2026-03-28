@@ -172,6 +172,7 @@
     <Content Include="Images\avatar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\Снимок экрана 2026-03-28 184130.png" />
     <Resource Include="Images\Снимок экрана 2026-03-28 183829.png" />
   </ItemGroup>
   <ItemGroup>
