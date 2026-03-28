@@ -7,10 +7,10 @@ using System.Linq;
 namespace Cinema.AuthorizationTests
 {
     [TestClass]
-    public class AuthorizationTests 
+    public class AuthorizationTests
     {
         [TestMethod]
-        public void AuthTest()  
+        public void AuthTest()
         {
             var page = new LoginWindow();
 
