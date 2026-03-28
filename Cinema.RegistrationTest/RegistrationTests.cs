@@ -29,7 +29,7 @@ namespace Cinema.RegistrationTests
 
             dbService.DeleteUser(addedUser.Id);
 
-        }    
+        }
 
         [TestMethod]
         public void RegisterTestFail()
