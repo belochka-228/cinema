@@ -10,6 +10,7 @@
 
 ## Результаты тестов
 <img width="799" height="332" alt="image" src="https://github.com/user-attachments/assets/61706af9-ec8a-4e3c-a8ff-8b9b6fe045c6" />
+
 Все тесты пройдены успешно.
 
 ### Авторизация (`Cinema.AuthorizationTests`)
