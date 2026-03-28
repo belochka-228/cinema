@@ -23,7 +23,7 @@ namespace Cinema.AuthorizationTests
         }
 
         [TestMethod]
-        public void AuthTestSuccess()
+        public void AuthTestSuccess()  
         {
             var db = new DatabaseService();
             var users = db.GetUsers();
