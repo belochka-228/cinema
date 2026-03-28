@@ -25,25 +25,22 @@ namespace cinema.Views
             InitializeComponent();
         }
 
-        private void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        public bool Register(string email, string password, string fullName, DateTime? birthDate, out string errorMessage)
         {
-            string email = EmailTextBox.Text.Trim();
-            string password = PasswordBox.Password;
-            string fullName = FullNameTextBox.Text.Trim();
-            DateTime? birthDate = BirthDatePicker.SelectedDate;
+            errorMessage = null;
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(fullName))
             {
-                ErrorText.Text = "Заполните все обязательные поля";
-                return;
+                errorMessage = "Заполните все обязательные поля";
+                return false;
             }
 
             try
             {
                 if (dbService.GetUsers().Any(u => u.Email == email))
                 {
-                    ErrorText.Text = "Пользователь с таким email уже существует";
-                    return;
+                    errorMessage = "Пользователь с таким email уже существует";
+                    return false;
                 }
 
                 var newUser = new User
@@ -57,12 +54,30 @@ namespace cinema.Views
 
                 dbService.AddUser(newUser);
                 SessionManager.CurrentUser = newUser;
-                DialogResult = true;
-                Close();
+                return true;
             }
             catch (Exception ex)
             {
-                ErrorText.Text = $"Ошибка: {ex.Message}";
+                errorMessage = $"Ошибка: {ex.Message}";
+                return false;
+            }
+        }
+
+        private void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string email = EmailTextBox.Text.Trim();
+            string password = PasswordBox.Password;
+            string fullName = FullNameTextBox.Text.Trim();
+            DateTime? birthDate = BirthDatePicker.SelectedDate;
+
+            if (Register(email, password, fullName, birthDate, out string error))
+            {
+                DialogResult = true;
+                Close();
+            }
+            else
+            {
+                ErrorText.Text = error;
             }
         }
     }

@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cinema", "cinema.csproj", "{F163F383-5844-4865-A9A6-18942467C092}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.AuthorizationTests", "..\UnitTestProject1\Cinema.AuthorizationTests.csproj", "{39EDBB80-965E-4218-89A7-887CFA649F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.RegistrationTests", "..\UnitTestProject2\Cinema.RegistrationTests.csproj", "{355F054F-9374-43B7-80EA-E752DC6C2C78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F163F383-5844-4865-A9A6-18942467C092}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F163F383-5844-4865-A9A6-18942467C092}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F163F383-5844-4865-A9A6-18942467C092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39EDBB80-965E-4218-89A7-887CFA649F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39EDBB80-965E-4218-89A7-887CFA649F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39EDBB80-965E-4218-89A7-887CFA649F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39EDBB80-965E-4218-89A7-887CFA649F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355F054F-9374-43B7-80EA-E752DC6C2C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355F054F-9374-43B7-80EA-E752DC6C2C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355F054F-9374-43B7-80EA-E752DC6C2C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355F054F-9374-43B7-80EA-E752DC6C2C78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

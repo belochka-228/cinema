@@ -25,15 +25,11 @@ namespace cinema.Views
             InitializeComponent();
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        public bool Auth(string email, string password)
         {
-            string email = EmailTextBox.Text.Trim();
-            string password = PasswordBox.Password;
-
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                ErrorText.Text = "Заполните все поля";
-                return;
+                return false;
             }
 
             try
@@ -42,17 +38,32 @@ namespace cinema.Views
                 if (user != null)
                 {
                     SessionManager.CurrentUser = user;
-                    DialogResult = true;
-                    Close();
+                    return true;
                 }
                 else
                 {
-                    ErrorText.Text = "Неверный email или пароль";
+                    return false;
                 }
             }
             catch (Exception ex)
             {
-                ErrorText.Text = $"Ошибка: {ex.Message}";
+                return false;
+            }
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string email = EmailTextBox.Text.Trim();
+            string password = PasswordBox.Password;
+
+            if (Auth(email, password))
+            {
+                DialogResult = true;
+                Close();
+            }
+            else
+            {
+                ErrorText.Text = "Неверный email или пароль";
             }
         }
     }

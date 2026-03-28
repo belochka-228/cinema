@@ -1,21 +1,26 @@
-﻿using System;
+﻿using cinema.Models;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using cinema.Models;
 
 namespace cinema.Services
 {
     public class DatabaseService
-    {   
+    {
 
-        private string connectionString = @"Server=WIN-49VOKS7VB4H;Database=CinemaDB;Trusted_Connection=True;";
-        public string ConnectionString
+        private readonly string connectionString;
+        public DatabaseService()
         {
-            get { return connectionString; }
+            var cs = ConfigurationManager.ConnectionStrings["CinemaDB"];
+            if (cs == null)
+                throw new InvalidOperationException("Строка подключения 'CinemaDB' не найдена в App.config");
+            connectionString = cs.ConnectionString;
         }
+        public string ConnectionString => connectionString;
         public List<Movie> GetMovies()
         {
             var movies = new List<Movie>();
@@ -284,6 +289,19 @@ namespace cinema.Services
                 }
             }
             return tickets;
+        }
+        public void DeleteUser(int userId)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM Users WHERE Id = @id";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", userId);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
